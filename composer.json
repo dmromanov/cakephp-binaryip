@@ -1,0 +1,20 @@
+{
+    "name": "dmromanov/cakephp-binaryip",
+    "description": "Binary IP Data Type for the CakePHP ORM",
+    "type": "cakephp-plugin",
+    "require": {
+        "cakephp/cakephp": "^3.0",
+        "cakephp/plugin-installer": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3",
+        "phpstan/phpstan": "^0.10.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitrii Romanov",
+            "role": "Author"
+        }
+    ]
+}
