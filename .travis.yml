@@ -1,0 +1,27 @@
+language: php
+
+dist: trusty
+
+php:
+- 5.6
+- 7.0
+- 7.1
+- 7.2
+- 7.3
+
+install:
+- composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress
+
+matrix:
+  fast_finish: true
+
+notifications:
+  email: false
+
+script:
+- if [[ $RUN_TESTS = 1 && $TRAVIS_PHP_VERSION != 7.2 ]]; then vendor/bin/phpunit; fi
+- if [[ $TRAVIS_PHP_VERSION = 7.2 ]]; then export CODECOVERAGE=1; vendor/bin/phpunit --coverage-clover=clover.xml; fi
+- if [[ $TRAVIS_PHP_VERSION = 7.2 ]]; then composer run cs-check; fi
+
+after_success:
+- if [[ $TRAVIS_PHP_VERSION = 7.2 ]]; then bash <(curl -s https://codecov.io/bash); fi
